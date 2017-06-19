@@ -2,18 +2,23 @@ from Ksiazka import Ksiazka
 
 
 class Polka:
-    def __init__(self, ksiazki):
+    def __init__(self, ksiazki=None):
         self.polka = []
-        for item in range(len(ksiazki)):
-            self.polka.append(ksiazki[item])
+        if ksiazki:
+            for item in range(len(ksiazki)):
+                self.polka.append(ksiazki[item])
 
     def dodaj(self, ksiazka):
-        for i in range(len(self.polka)):
-            ksiega = self.polka[i]
-            if ksiazka.tytul == ksiega.tytul and ksiazka.autor == ksiega.autor:
-                print('nie można dodać...')
-            else:
-                self.polka.append(ksiazka)
+        if len(self.polka) > 0:
+            for i in range(len(self.polka)):
+                ksiega = self.polka[i]
+                if ksiazka.tytul == ksiega.tytul and ksiazka.autor == ksiega.autor:
+                    print('nie można dodać...')
+                else:
+                    self.polka.append(ksiazka)
+                    print('Książka dodana')
+        else:
+            self.polka.append(ksiazka)
 
     def usun(self, index):
         usunieta_ksiazka = False
@@ -34,10 +39,11 @@ class Polka:
     def pokaz(self):
         opis_polki = ''
         for i in range(len(self.polka)):
-            opis_polki += "----ksiazka " + str(i) + "----\n"
+            opis_polki += "----książka " + str(i) + "----\n"
             opis_polki += str(self.polka[i])
             opis_polki += "\n-----------------\n"
         print(opis_polki)
+        # return opis_polki
 
     def sortuj(self, parametr):
         if parametr == 'autor':
