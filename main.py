@@ -71,7 +71,7 @@ while zamknij:
     menu()
     wybor = int(input('Co chcesz zrobić: '))
     if wybor == 1:
-        polka , polka_istnieje = stworz_polke()
+        polka, polka_istnieje = stworz_polke()
     elif wybor == 2:
         dodaj_ksiazke()
     elif wybor == 3:
